@@ -35,7 +35,6 @@ enum replay_enable_option {
 	pr_enable_option_general_ui = 0x8,
 	pr_enable_option_static_screen_coasting = 0x10000,
 	pr_enable_option_mpo_video_coasting = 0x20000,
-	pr_enable_option_full_screen_video_coasting = 0x40000,
 };
 
 bool amdgpu_dm_link_supports_replay(struct dc_link *link, struct amdgpu_dm_connector *aconnector);
