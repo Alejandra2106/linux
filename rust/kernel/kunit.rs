@@ -92,9 +92,7 @@ macro_rules! kunit_assert {
             // SAFETY: There is only a static instance and in that one the pointer field points to
             // an immutable C string.
             unsafe impl Sync for Location {}
-
-            // SAFETY: There is only a static instance and in that one the pointer field points to
-            // an immutable C string.
+            
             unsafe impl Sync for UnaryAssert {}
 
             static LOCATION: Location = Location($crate::bindings::kunit_loc {
@@ -135,16 +133,6 @@ macro_rules! kunit_assert {
                     core::ptr::null(),
                 );
             }
-
-            // SAFETY: FFI call; the `test` pointer is valid because this hidden macro should only
-            // be called by the generated documentation tests which forward the test pointer given
-            // by KUnit.
-            unsafe {
-                $crate::bindings::__kunit_abort(kunit_test);
-            }
-        }
-    };
-}
 
 /// Asserts that two expressions are equal to each other (using [`PartialEq`]).
 ///
